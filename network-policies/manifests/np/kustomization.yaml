@@ -10,5 +10,4 @@ resources:
   - 03-ui-ingress-only.yaml
   - 04-api-heroes.yaml
   - 04-api-villains.yaml
-  - 04-api-heroes.yaml
   - 04-api-locations.yaml
