@@ -1,0 +1,17 @@
+kind: AppProject
+apiVersion: argoproj.io/v1alpha1
+metadata:
+  name: heroes-project
+  annotations:
+    argocd.argoproj.io/sync-options: Validate=false
+spec:
+  clusterResourceWhitelist:
+    - group: '*'
+      kind: '*'
+  destinations:
+    - namespace: '*'
+      server: '*'
+  orphanedResources:
+    warn: false
+  sourceRepos:
+    - '*'

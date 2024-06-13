@@ -1,0 +1,302 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  creationTimestamp: "2024-06-13T13:33:58Z"
+  labels:
+    network-policy-generator.stackrox.io/generated: "true"
+  name: stackrox-generated-rest-heroes
+  namespace: app-demo
+spec:
+  ingress:
+  - ports:
+    - port: 8083
+      protocol: TCP
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/name: rest-heroes
+      app.kubernetes.io/part-of: heroes-service
+      app.kubernetes.io/version: java17-latest
+  policyTypes:
+  - Ingress
+
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  creationTimestamp: "2024-06-13T13:33:58Z"
+  labels:
+    network-policy-generator.stackrox.io/generated: "true"
+  name: stackrox-generated-ui-super-heroes
+  namespace: app-demo
+spec:
+  ingress:
+  - ports:
+    - port: 8080
+      protocol: TCP
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/name: ui-super-heroes
+      app.kubernetes.io/part-of: ui-super-heroes
+      app.kubernetes.io/version: java17-latest
+  policyTypes:
+  - Ingress
+
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  creationTimestamp: "2024-06-13T13:33:58Z"
+  labels:
+    network-policy-generator.stackrox.io/generated: "true"
+  name: stackrox-generated-rest-narration
+  namespace: app-demo
+spec:
+  ingress:
+  - ports:
+    - port: 8087
+      protocol: TCP
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/name: rest-narration
+      app.kubernetes.io/part-of: narration-service
+      app.kubernetes.io/version: java17-latest
+  policyTypes:
+  - Ingress
+
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  creationTimestamp: "2024-06-13T13:33:58Z"
+  labels:
+    network-policy-generator.stackrox.io/generated: "true"
+  name: stackrox-generated-rest-villains
+  namespace: app-demo
+spec:
+  ingress:
+  - ports:
+    - port: 8084
+      protocol: TCP
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/name: rest-villains
+      app.kubernetes.io/part-of: villains-service
+      app.kubernetes.io/version: java17-latest
+  policyTypes:
+  - Ingress
+
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  creationTimestamp: "2024-06-13T13:33:58Z"
+  labels:
+    network-policy-generator.stackrox.io/generated: "true"
+  name: stackrox-generated-rest-fights
+  namespace: app-demo
+spec:
+  ingress:
+  - ports:
+    - port: 8082
+      protocol: TCP
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/name: rest-fights
+      app.kubernetes.io/part-of: fights-service
+      app.kubernetes.io/version: java17-latest
+  policyTypes:
+  - Ingress
+
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  creationTimestamp: "2024-06-13T13:33:58Z"
+  labels:
+    network-policy-generator.stackrox.io/generated: "true"
+  name: stackrox-generated-fights-db
+  namespace: app-demo
+spec:
+  ingress:
+  - from:
+    - podSelector:
+        matchLabels:
+          app.kubernetes.io/name: rest-fights
+          app.kubernetes.io/part-of: fights-service
+          app.kubernetes.io/version: java17-latest
+    ports:
+    - port: 27017
+      protocol: TCP
+  podSelector:
+    matchLabels:
+      name: fights-db
+  policyTypes:
+  - Ingress
+
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  creationTimestamp: "2024-06-13T13:33:58Z"
+  labels:
+    network-policy-generator.stackrox.io/generated: "true"
+  name: stackrox-generated-apicurio
+  namespace: app-demo
+spec:
+  ingress:
+  - ports:
+    - port: 8080
+      protocol: TCP
+  podSelector:
+    matchLabels:
+      name: apicurio
+  policyTypes:
+  - Ingress
+
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  creationTimestamp: "2024-06-13T13:33:58Z"
+  labels:
+    network-policy-generator.stackrox.io/generated: "true"
+  name: stackrox-generated-event-statistics
+  namespace: app-demo
+spec:
+  ingress:
+  - ports:
+    - port: 8085
+      protocol: TCP
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/name: event-statistics
+      app.kubernetes.io/part-of: event-stats
+      app.kubernetes.io/version: java17-latest
+  policyTypes:
+  - Ingress
+
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  creationTimestamp: "2024-06-13T13:33:58Z"
+  labels:
+    network-policy-generator.stackrox.io/generated: "true"
+  name: stackrox-generated-heroes-db
+  namespace: app-demo
+spec:
+  ingress:
+  - from:
+    - podSelector:
+        matchLabels:
+          app.kubernetes.io/name: rest-heroes
+          app.kubernetes.io/part-of: heroes-service
+          app.kubernetes.io/version: java17-latest
+    ports:
+    - port: 5432
+      protocol: TCP
+  podSelector:
+    matchLabels:
+      name: heroes-db
+  policyTypes:
+  - Ingress
+
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  creationTimestamp: "2024-06-13T13:33:58Z"
+  labels:
+    network-policy-generator.stackrox.io/generated: "true"
+  name: stackrox-generated-grpc-locations
+  namespace: app-demo
+spec:
+  ingress:
+  - ports:
+    - port: 8089
+      protocol: TCP
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/name: grpc-locations
+      app.kubernetes.io/part-of: locations-service
+      app.kubernetes.io/version: java17-latest
+  policyTypes:
+  - Ingress
+
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  creationTimestamp: "2024-06-13T13:33:58Z"
+  labels:
+    network-policy-generator.stackrox.io/generated: "true"
+  name: stackrox-generated-villains-db
+  namespace: app-demo
+spec:
+  ingress:
+  - from:
+    - podSelector:
+        matchLabels:
+          app.kubernetes.io/name: rest-villains
+          app.kubernetes.io/part-of: villains-service
+          app.kubernetes.io/version: java17-latest
+    ports:
+    - port: 5432
+      protocol: TCP
+  podSelector:
+    matchLabels:
+      name: villains-db
+  policyTypes:
+  - Ingress
+
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  creationTimestamp: "2024-06-13T13:33:58Z"
+  labels:
+    network-policy-generator.stackrox.io/generated: "true"
+  name: stackrox-generated-fights-kafka
+  namespace: app-demo
+spec:
+  ingress:
+  - from:
+    - podSelector:
+        matchLabels:
+          app.kubernetes.io/name: rest-fights
+          app.kubernetes.io/part-of: fights-service
+          app.kubernetes.io/version: java17-latest
+    ports:
+    - port: 9092
+      protocol: TCP
+  podSelector:
+    matchLabels:
+      name: fights-kafka
+  policyTypes:
+  - Ingress
+
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  creationTimestamp: "2024-06-13T13:33:58Z"
+  labels:
+    network-policy-generator.stackrox.io/generated: "true"
+  name: stackrox-generated-locations-db
+  namespace: app-demo
+spec:
+  ingress:
+  - from:
+    - podSelector:
+        matchLabels:
+          app.kubernetes.io/name: grpc-locations
+          app.kubernetes.io/part-of: locations-service
+          app.kubernetes.io/version: java17-latest
+    ports:
+    - port: 3306
+      protocol: TCP
+  podSelector:
+    matchLabels:
+      name: locations-db
+  policyTypes:
+  - Ingress

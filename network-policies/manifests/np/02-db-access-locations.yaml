@@ -1,0 +1,22 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: locations-db-policy
+  namespace: app-demo
+spec:
+  ingress:
+  - from:
+    - podSelector:
+        matchLabels:
+          app.kubernetes.io/name: grpc-locations
+          app.kubernetes.io/part-of: locations-service
+          app.kubernetes.io/version: java17-latest
+    ports:
+    - port: 3306
+      protocol: TCP
+  podSelector:
+    matchLabels:
+      name: locations-db
+  policyTypes:
+  - Ingress

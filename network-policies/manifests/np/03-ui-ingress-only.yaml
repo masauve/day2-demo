@@ -1,0 +1,18 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: ui-super-heroes
+  namespace: app-demo
+spec:
+  ingress:
+  - ports:
+    - port: 8080
+      protocol: TCP
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/name: ui-super-heroes
+      app.kubernetes.io/part-of: ui-super-heroes
+      app.kubernetes.io/version: java17-latest
+  policyTypes:
+  - Ingress

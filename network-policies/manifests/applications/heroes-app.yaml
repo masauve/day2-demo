@@ -1,0 +1,22 @@
+kind: Application
+apiVersion: argoproj.io/v1alpha1
+metadata:
+  name: heroes-app
+  annotations:
+    argocd.argoproj.io/sync-options: Validate=false
+spec:
+  destination:
+    namespace: app-demo
+    server: https://kubernetes.default.svc
+  project: heroes-project
+  source:
+    path: network-policies/manifests/np
+    repoURL: https://github.com/masauve/day2-demo
+    targetRevision: main
+  syncOptions:
+  - Validate=false
+  - SkipDryRunOnMissingResource=true
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: true

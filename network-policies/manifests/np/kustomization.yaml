@@ -1,0 +1,10 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - 01-deny-by-default.yaml
+  - 02-db-access-fights.yaml
+  - 02-db-access-heroes.yaml
+  - 02-db-access-locations.yaml
+  - 02-db-access-villains.yaml
+  - 03-ui-ingress-only.yaml
