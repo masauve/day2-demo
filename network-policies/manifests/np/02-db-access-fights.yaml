@@ -2,9 +2,8 @@
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
-  labels:
-  name: fights-db-policy
-  namespace: app-demo
+     name: fights-db-policy
+     namespace: app-demo
 spec:
   ingress:
   - from:
